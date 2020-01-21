@@ -368,14 +368,14 @@
 
 
 	*  水平居中：给div设置一个宽度，然后添加margin:0 auto属性
-
+``` css
 			div{
 				width:200px;
 				margin:0 auto;
 			 }
-
+```
 	*  让绝对定位的div居中
-
+``` css
 			div {
 				position: absolute;
 				width: 300px;
@@ -387,9 +387,9 @@
 				right: 0;
 				background-color: pink;	/* 方便看效果 */
 			}
-
+```
 	*  水平垂直居中一
-
+``` css
 			确定容器的宽高 宽500 高 300 的层
 			设置层的外边距
 
@@ -403,11 +403,11 @@
 				background-color: pink;	 	/* 方便看效果 */
 
 			 }
-
+```
 	*  水平垂直居中二
 
 			未知容器的宽高，利用 `transform` 属性
-
+``` css
 			div {
 				position: absolute;		/* 相对定位或绝对定位均可 */
 				width:500px;
@@ -418,12 +418,12 @@
 				background-color: pink;	 	/* 方便看效果 */
 
 			}
-
+```
 	*  水平垂直居中三
 
 			利用 flex 布局
 			实际使用时应考虑兼容性
-
+``` css
 			.container {
 				display: flex;
 				align-items: center; 		/* 垂直居中 */
@@ -436,7 +436,7 @@
 				background-color: pink;		/* 方便看效果 */
 			}  
 
-
+```
 - display有哪些值？说明他们的作用。
 
 		  block       	块类型。默认宽度为父元素宽度，可设置宽高，换行显示。
@@ -528,14 +528,14 @@
 		  首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。
 		  接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。
 
-          css
+``` css
 	          .bb{
 		          background-color:red;/*所有识别*/
 			      background-color:#00deff\9; /*IE6、7、8识别*/
 			      +background-color:#a200ff;/*IE6、7识别*/
 			      _background-color:#1e0bd1;/*IE6识别*/
 	          }
-
+```
 
 		*  IE下,可以使用获取常规属性的方法来获取自定义属性,
 		   也可以使用getAttribute()获取自定义属性;
@@ -568,6 +568,7 @@
 		最简单的初始化方法： * {padding: 0; margin: 0;} （强烈不建议）
 
 		淘宝的样式初始化代码：
+``` css
 		body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
 		body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; }
 		h1, h2, h3, h4, h5, h6{ font-size:100%; }
@@ -583,7 +584,7 @@
 		fieldset, img { border:0; }
 		button, input, select, textarea { font-size:100%; }
 		table { border-collapse:collapse; border-spacing:0; }
-
+```
 
 - absolute的containing block(容器块)计算方式跟正常流有什么不同？
 
@@ -616,7 +617,7 @@
 - css定义的权重
 
 		以下是权重的规则：标签的权重为1，class的权重为10，id的权重为100，以下例子是演示各种定义的权重值：
-
+``` css
 		/*权重为1*/
 		div{
 		}
@@ -635,7 +636,7 @@
 		/*权重为10+10+1=21*/
 		.class1 .class2 div{
 		}
-
+```
 		如果权重相同，则最后定义的样式会起作用，但是应该避免这种情况出现
 
 
@@ -646,6 +647,7 @@
 		1、父级div定义height；
 		2、父级div 也一起浮动；
 		3、常规的使用一个class；
+``` css
 			.clearfix::before, .clearfix::after {
 			    content: " ";
 			    display: table;
@@ -656,8 +658,9 @@
 			.clearfix {
 			    *zoom: 1;
 			}
-
+```
 		4、SASS编译的时候，浮动元素的父级div定义伪类:after
+``` css
 			&::after,&::before{
 			    content: " ";
 		        visibility: hidden;
@@ -665,7 +668,7 @@
 		        height: 0;
 		        clear: both;
 			}
-
+```
 		解析原理：
 		1) display:block 使生成的元素以块级元素显示,占满剩余空间;
 		2) height:0 避免生成内容破坏原有布局的高度。
@@ -704,13 +707,13 @@
 	<!-- link元素中的CSS媒体查询 -->
 	当媒体查询为真时，相关的样式表或样式规则会按照正常的级联规被应用。
 	当媒体查询返回假， <link> 标签上带有媒体查询的样式表 仍将被下载 （只不过不会被应用）。
-
+``` html
 	<link rel="stylesheet" media="(max-width: 800px)" href="example.css" />
-
+```
 	<!-- 样式表中的CSS媒体查询 -->
 	包含了一个媒体类型和至少一个使用 宽度、高度和颜色等媒体属性来限制样式表范围的表达式。
 	CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某些特定的设备范围。
-
+``` html
 	<style>
 		@media (min-width: 700px) and (orientation: landscape){
 		  .sidebar {
@@ -718,7 +721,7 @@
 		  }
 		}
 	</style>
-
+```
 
 
 - 使用 CSS 预处理器吗？喜欢那个？
@@ -772,13 +775,13 @@
 
 
 - 如何修改chrome记住密码后自动填充表单的黄色背景 ？
-
+``` css
 		input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 		  background-color: rgb(250, 255, 189); /* #FAFFBD; */
 		  background-image: none;
 		  color: rgb(0, 0, 0);
 		}
-
+```
 - 你对line-height是如何理解的？
 
 - 设置元素浮动后，该元素的display值是多少？
@@ -793,9 +796,11 @@
 		4、使用12px以上字体：为了兼容、为了代码更简单 从新考虑权重下兼容性。
 
 - 让页面里的字体变清晰，变细用CSS怎么做？
-
+``` css
+	{
 		-webkit-font-smoothing: antialiased;
-
+	}
+```
 - font-style属性可以让它赋值为“oblique” oblique是什么意思？
 
 		倾斜的字体样式
@@ -805,8 +810,9 @@
 		fixed的元素是相对整个页面固定位置的，你在屏幕上滑动只是在移动这个所谓的viewport，
 		原来的网页还好好的在那，fixed的内容也没有变过位置，
 		所以说并不是iOS不支持fixed，只是fixed的元素不是相对手机屏幕固定的。
+``` html
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-
+```
 - 如果需要手动写动画，你认为最小时间间隔是多久，为什么？（阿里）
 
 		多数显示器默认频率是60Hz，即1秒刷新60次，所以理论上最小间隔为1/60＊1000ms ＝ 16.7ms
@@ -848,9 +854,6 @@
 
 - rem布局的优缺点
 
-
-
-
 ## <a name='js'>JavaScript</a>
 
 
@@ -885,7 +888,10 @@
 		每个对象都会在其内部初始化一个属性，就是prototype(原型)，当我们访问一个对象的属性时，
 		如果这个对象内部不存在这个属性，那么他就会去prototype里找这个属性，这个prototype又会有自己的prototype，
 		于是就这样一直找下去，也就是我们平时所说的原型链的概念。
-		关系：instance.constructor.prototype = instance.__proto__
+		关系：
+``` javascript
+instance.constructor.prototype = instance.__proto__
+```
 
 		特点：
 		JavaScript对象是通过引用来传递的，我们创建的每个新对象实体中并没有一份属于自己的原型副本。当我们修改原型时，与之相关的对象也会继承这一改变。
@@ -893,19 +899,18 @@
 
 		 当我们需要一个属性的时，Javascript引擎会先看当前对象中是否有这个属性， 如果没有的话，
 		 就会查找他的Prototype对象是否有这个属性，如此递推下去，一直检索到 Object 内建对象。
-			function Func(){}
-			Func.prototype.name = "Sean";
-			Func.prototype.getInfo = function() {
-			  return this.name;
-			}
-			var person = new Func();//现在可以参考var person = Object.create(oldObject);
-			console.log(person.getInfo());//它拥有了Func的属性和方法
-			//"Sean"
-			console.log(Func.prototype);
-			// Func { name="Sean", getInfo=function()}
-
-
-
+``` javascript
+	function Func(){}
+	Func.prototype.name = "Sean";
+	Func.prototype.getInfo = function() {
+		return this.name;
+	}
+	var person = new Func();//现在可以参考var person = Object.create(oldObject);
+	console.log(person.getInfo());//它拥有了Func的属性和方法
+	//"Sean"
+	console.log(Func.prototype);
+	// Func { name="Sean", getInfo=function()}
+```
 
 -  JavaScript有几种类型的值？，你能画一下他们的内存图吗？
 
@@ -924,50 +929,55 @@
 		* 正则表达式，'12.3b'.match(/(\d)+(\.)?(\d)+/g)[0] * 1, 但是这个不太靠谱，提供一种思路而已。
 
 - 如何将浮点数点左边的数每三位添加一个逗号，如12000000.11转化为『12,000,000.11』?
-
-		function commafy(num){
-			return num && num
-				.toString()
-				.replace(/(\d)(?=(\d{3})+\.)/g, function($1, $2){
-					return $2 + ',';
-				});
-		}
+``` javascript
+	function commafy(num){
+		return num && num
+			.toString()
+			.replace(/(\d)(?=(\d{3})+\.)/g, function($1, $2){
+				return $2 + ',';
+			});
+	}
+```
 
 - 如何实现数组的随机排序？
 		
 		方法一：
-			var arr = [1,2,3,4,5,6,7,8,9,10];
-			function randSort1(arr){
-				for(var i = 0,len = arr.length;i < len; i++ ){
-					var rand = parseInt(Math.random()*len);
-					var temp = arr[rand];
-					arr[rand] = arr[i];
-					arr[i] = temp;
-				}
-				return arr;
-			}
-			console.log(randSort1(arr));
-			
+``` javascript
+	var arr = [1,2,3,4,5,6,7,8,9,10];
+	function randSort1(arr){
+		for(var i = 0,len = arr.length;i < len; i++ ){
+			var rand = parseInt(Math.random()*len);
+			var temp = arr[rand];
+			arr[rand] = arr[i];
+			arr[i] = temp;
+		}
+		return arr;
+	}
+	console.log(randSort1(arr));
+```
+
 		方法二：
-			var arr = [1,2,3,4,5,6,7,8,9,10];
-			function randSort2(arr){
-				var mixedArray = [];
-				while(arr.length > 0){
-					var randomIndex = parseInt(Math.random()*arr.length);
-					mixedArray.push(arr[randomIndex]);
-					arr.splice(randomIndex, 1);
-				}
-				return mixedArray;
-			}
-			console.log(randSort2(arr));
-
+``` javascript
+	var arr = [1,2,3,4,5,6,7,8,9,10];
+	function randSort2(arr){
+		var mixedArray = [];
+		while(arr.length > 0){
+			var randomIndex = parseInt(Math.random()*arr.length);
+			mixedArray.push(arr[randomIndex]);
+			arr.splice(randomIndex, 1);
+		}
+		return mixedArray;
+	}
+	console.log(randSort2(arr));
+```
 		方法三：
-			var arr = [1,2,3,4,5,6,7,8,9,10];
-			arr.sort(function(){
-				return Math.random() - 0.5;
-			})
-			console.log(arr);
-
+``` javascript
+	var arr = [1,2,3,4,5,6,7,8,9,10];
+	arr.sort(function(){
+		return Math.random() - 0.5;
+	})
+	console.log(arr);
+```
 -  Javascript如何实现继承？
 
 		1、构造继承
@@ -1000,11 +1010,11 @@
 
 
 		1、对象字面量的方式
-
-			person={firstname:"Mark",lastname:"Yun",age:25,eyecolor:"black"};
-
+``` javascript
+	person={firstname:"Mark",lastname:"Yun",age:25,eyecolor:"black"};
+```
 		2、用function来模拟无参的构造函数
-
+``` javascript
 			function Person(){}
 			var person=new Person();//定义一个function，如果使用new"实例化",该function可以看作是一个Class
 			person.name="Mark";
@@ -1013,57 +1023,57 @@
 			alert(person.name+" hello...");
 			}
 			person.work();
-
+```
 		3、用function来模拟参构造函数来实现（用this关键字定义构造的上下文属性）
+``` javascript
+	function Pet(name,age,hobby){
+		this.name=name;//this作用域：当前对象
+		this.age=age;
+		this.hobby=hobby;
+		this.eat=function(){
+			alert("我叫"+this.name+",我喜欢"+this.hobby+",是个程序员");
+		}
+	}
+	var maidou =new Pet("麦兜",25,"coding");//实例化、创建对象
+	maidou.eat();//调用eat方法
 
-			function Pet(name,age,hobby){
-			   this.name=name;//this作用域：当前对象
-			   this.age=age;
-			   this.hobby=hobby;
-			   this.eat=function(){
-			      alert("我叫"+this.name+",我喜欢"+this.hobby+",是个程序员");
-			   }
-			}
-			var maidou =new Pet("麦兜",25,"coding");//实例化、创建对象
-			maidou.eat();//调用eat方法
-
-
+```
 		4、用工厂方式来创建（内置对象）
-
-			 var wcDog =new Object();
-			 wcDog.name="旺财";
-			 wcDog.age=3;
-			 wcDog.work=function(){
-			   alert("我是"+wcDog.name+",汪汪汪......");
-			 }
-			 wcDog.work();
-
+``` javascript
+	var wcDog =new Object();
+	wcDog.name="旺财";
+	wcDog.age=3;
+	wcDog.work=function(){
+	alert("我是"+wcDog.name+",汪汪汪......");
+	}
+	wcDog.work();
+```
 
 		5、用原型方式来创建
+``` javascript
+	function Dog(){
 
-			function Dog(){
+		}
+		Dog.prototype.name="旺财";
+		Dog.prototype.eat=function(){
+		alert(this.name+"是个吃货");
+		}
+		var wangcai =new Dog();
+		wangcai.eat();
+```
 
-			 }
-			 Dog.prototype.name="旺财";
-			 Dog.prototype.eat=function(){
-			 alert(this.name+"是个吃货");
-			 }
-			 var wangcai =new Dog();
-			 wangcai.eat();
-
-
-		5、用混合方式来创建
-
-			function Car(name,price){
-			  this.name=name;
-			  this.price=price;
-			}
-			 Car.prototype.sell=function(){
-			   alert("我是"+this.name+"，我现在卖"+this.price+"万元");
-			  }
-			var camry =new Car("凯美瑞",27);
-			camry.sell();
-
+		6、用混合方式来创建
+``` javascript
+	function Car(name,price){
+		this.name=name;
+		this.price=price;
+	}
+		Car.prototype.sell=function(){
+		alert("我是"+this.name+"，我现在卖"+this.price+"万元");
+		}
+	var camry =new Car("凯美瑞",27);
+	camry.sell();
+```
 -  Javascript作用链域?
 
 		全局函数无法查看局部函数的内部细节，但局部函数可以查看其上层的函数细节，直至全局细节。
@@ -1135,97 +1145,97 @@
 
 
 -  写一个通用的事件侦听器函数。
-
-			// event(事件)工具集，来源：github.com/markyun
-			markyun.Event = {
-				// 页面加载完成后
-				readyEvent : function(fn) {
-					if (fn==null) {
-						fn=document;
+``` javascript
+	// event(事件)工具集，来源：github.com/markyun
+	markyun.Event = {
+		// 页面加载完成后
+		readyEvent : function(fn) {
+			if (fn==null) {
+				fn=document;
+			}
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = fn;
+			} else {
+				window.onload = function() {
+					oldonload();
+					fn();
+				};
+			}
+		},
+		// 视能力分别使用dom0||dom2||IE方式 来绑定事件
+		// 参数： 操作的元素,事件名称 ,事件处理程序
+		addEvent : function(element, type, handler) {
+			if (element.addEventListener) {
+				//事件类型、需要执行的函数、是否捕捉
+				element.addEventListener(type, handler, false);
+			} else if (element.attachEvent) {
+				element.attachEvent('on' + type, function() {
+					handler.call(element);
+				});
+			} else {
+				element['on' + type] = handler;
+			}
+		},
+		// 移除事件
+		removeEvent : function(element, type, handler) {
+			if (element.removeEventListener) {
+				element.removeEventListener(type, handler, false);
+			} else if (element.datachEvent) {
+				element.detachEvent('on' + type, handler);
+			} else {
+				element['on' + type] = null;
+			}
+		},
+		// 阻止事件 (主要是事件冒泡，因为IE不支持事件捕获)
+		stopPropagation : function(ev) {
+			if (ev.stopPropagation) {
+				ev.stopPropagation();
+			} else {
+				ev.cancelBubble = true;
+			}
+		},
+		// 取消事件的默认行为
+		preventDefault : function(event) {
+			if (event.preventDefault) {
+				event.preventDefault();
+			} else {
+				event.returnValue = false;
+			}
+		},
+		// 获取事件目标
+		getTarget : function(event) {
+			return event.target || event.srcElement;
+		},
+		// 获取event对象的引用，取到事件的所有信息，确保随时能使用event；
+		getEvent : function(e) {
+			var ev = e || window.event;
+			if (!ev) {
+				var c = this.getEvent.caller;
+				while (c) {
+					ev = c.arguments[0];
+					if (ev && Event == ev.constructor) {
+						break;
 					}
-					var oldonload = window.onload;
-					if (typeof window.onload != 'function') {
-						window.onload = fn;
-					} else {
-						window.onload = function() {
-							oldonload();
-							fn();
-						};
-					}
-				},
-				// 视能力分别使用dom0||dom2||IE方式 来绑定事件
-				// 参数： 操作的元素,事件名称 ,事件处理程序
-				addEvent : function(element, type, handler) {
-					if (element.addEventListener) {
-						//事件类型、需要执行的函数、是否捕捉
-						element.addEventListener(type, handler, false);
-					} else if (element.attachEvent) {
-						element.attachEvent('on' + type, function() {
-							handler.call(element);
-						});
-					} else {
-						element['on' + type] = handler;
-					}
-				},
-				// 移除事件
-				removeEvent : function(element, type, handler) {
-					if (element.removeEventListener) {
-						element.removeEventListener(type, handler, false);
-					} else if (element.datachEvent) {
-						element.detachEvent('on' + type, handler);
-					} else {
-						element['on' + type] = null;
-					}
-				},
-				// 阻止事件 (主要是事件冒泡，因为IE不支持事件捕获)
-				stopPropagation : function(ev) {
-					if (ev.stopPropagation) {
-						ev.stopPropagation();
-					} else {
-						ev.cancelBubble = true;
-					}
-				},
-				// 取消事件的默认行为
-				preventDefault : function(event) {
-					if (event.preventDefault) {
-						event.preventDefault();
-					} else {
-						event.returnValue = false;
-					}
-				},
-				// 获取事件目标
-				getTarget : function(event) {
-					return event.target || event.srcElement;
-				},
-				// 获取event对象的引用，取到事件的所有信息，确保随时能使用event；
-				getEvent : function(e) {
-					var ev = e || window.event;
-					if (!ev) {
-						var c = this.getEvent.caller;
-						while (c) {
-							ev = c.arguments[0];
-							if (ev && Event == ev.constructor) {
-								break;
-							}
-							c = c.caller;
-						}
-					}
-					return ev;
+					c = c.caller;
 				}
-			};
-
+			}
+			return ev;
+		}
+	};
+```
 -  ["1", "2", "3"].map(parseInt) 答案是多少？
 
 		parseInt() 函数能解析一个字符串，并返回一个整数，需要两个参数 (val, radix)，
 		其中 radix 表示要解析的数字的基数。【该值介于 2 ~ 36 之间，并且字符串中的数字不能大于radix才能正确返回数字结果值】;
 		但此处 map 传了 3 个 (element, index, array),我们重写parseInt函数测试一下是否符合上面的规则。
-
+``` javascript
 		function parseInt(str, radix) {
 		    return str+'-'+radix;
 		};
 		var a=["1", "2", "3"];
 		a.map(parseInt);  // ["1-0", "2-1", "3-2"] 不能大于radix
-
+```
 		因为二进制里面，没有数字3,导致出现超范围的radix赋值和不合法的进制解析，才会返回NaN
 		所以["1", "2", "3"].map(parseInt) 答案也就是：[1, NaN, NaN]
 
@@ -1247,7 +1257,7 @@
 		1.函数内再嵌套函数
 		2.内部函数可以引用外层的参数和变量
 		3.参数和变量不会被垃圾回收机制回收
-
+``` html
 		//li节点的onclick事件都能正确的弹出当前被点击的li索引
 		 <ul id="testUL">
 	        <li> index = 0</li>
@@ -1265,14 +1275,14 @@
 			            })(i);
 			}
 		</script>
-
+```
 
 
 		执行say667()后,say667()闭包内部变量会存在,而闭包内部函数的内部变量不会存在
 		使得Javascript的垃圾回收机制GC不会收回say667()所占用的资源
 		因为say667()的内部函数的执行需要依赖say667()中的变量
 		这是对闭包作用的非常直白的描述
-
+``` javascript
 		  function say667() {
 			// Local variable that ends up within closure
 			var num = 666;
@@ -1285,7 +1295,7 @@
 
 		 var sayAlert = say667();
 		 sayAlert()//执行结果应该弹出的667
-
+```
 
 -  javascript 代码中的"use strict";是什么意思 ? 使用它区别是什么？
 
@@ -1303,20 +1313,22 @@
 -  如何判断一个对象是否属于某个类？
 
  		  使用instanceof （待完善）
+``` javascript
 	       if(a instanceof Person){
 	           alert('yes');
 	       }
-
+```
 -  new操作符具体干了什么呢?
 
-			 1、创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。
-	  	  	 2、属性和方法被加入到 this 引用的对象中。
-	 		 3、新创建的对象由 this 所引用，并且最后隐式的返回 this 。
+	1、创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。
+	2、属性和方法被加入到 this 引用的对象中。
+	3、新创建的对象由 this 所引用，并且最后隐式的返回 this 。 
 
-		var obj  = {};
-		obj.__proto__ = Base.prototype;
-		Base.call(obj);
-
+``` javascript
+	var obj  = {};
+	obj.__proto__ = Base.prototype;
+	Base.call(obj);
+```
 
 -  用原生JavaScript的实现过什么功能吗？
 
@@ -1348,7 +1360,10 @@
 		var last=obj.toJSONString();
 		var last=JSON.stringify(obj);
 
--  `[].forEach.call($$("*"),function(a){a.style.outline="1px solid #"+(~~(Math.random()*(1<<24))).toString(16)})` 能解释一下这段代码的意思吗？
+-  能解释一下这段代码的意思吗？
+``` javascript
+[].forEach.call($$("*"),function(a){a.style.outline="1px solid #"+(~~(Math.random()*(1<<24))).toString(16)})
+```
 
 
 -  js延迟加载的方式有哪些？
@@ -1409,7 +1424,7 @@
 -  模块化开发怎么做？
 
 	 [ 立即执行函数](http://benalman.com/news/2010/11/immediately-invoked-function-expression/),不暴露私有成员
-
+``` javascript
 		    var module1 = (function(){
 		    　　　　var _count = 0;
 		    　　　　var m1 = function(){
@@ -1423,7 +1438,7 @@
 		    　　　　　　m2 : m2
 		    　　　　};
 		    　　})();
-
+```
 	（待完善）
 
 -  AMD（Modules/Asynchronous-Definition）、CMD（Common Module Definition）规范区别？
@@ -1438,7 +1453,7 @@
 
 		    1. 对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。不过 RequireJS 从 2.0 开始，也改成可以延迟执行（根据写法不同，处理方式不同）。CMD 推崇 as lazy as possible.
 		    2. CMD 推崇依赖就近，AMD 推崇依赖前置。看代码：
-
+``` javascript
 		// CMD
 		define(function(require, exports, module) {
 		    var a = require('./a')
@@ -1456,7 +1471,7 @@
 		    b.doSomething()
 		    // ...
 		})
-
+```
 
 -  requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何
 缓存的？）
@@ -1505,7 +1520,7 @@
 		  例子中用 add 来替换 sub，add.call(sub,3,1) == add(3,1) ，所以运行结果为：alert(4);
 
 		  注意：js 中的函数其实是对象，函数名是对 Function 对象的引用。
-
+``` javascript
 			function add(a,b)
 			{
 			    alert(a+b);
@@ -1517,7 +1532,7 @@
 			}
 
 			add.call(sub,3,1);
-
+```
 
 
 -  数组和对象有哪些原生方法，列举一下？
@@ -1573,7 +1588,7 @@
 -  jquery 中如何将数组转化为json字符串，然后再转化回来？
 
 jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩展：
-
+``` javascript
 		$.fn.stringifyArray = function(array) {
 		    return JSON.stringify(array)
 		}
@@ -1582,9 +1597,9 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
 		    return JSON.parse(array)
 		}
 
-		然后调用：
+		// /然后调用：
 		$("").stringifyArray(array)
-
+```
 -  jQuery和Zepto的区别？各自的使用场景？
 
 -  针对 jQuery 的优化方法？
@@ -1670,15 +1685,16 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
 
 
 		参考：http://www.tuicool.com/articles/ArQZfui
-		function commafy(num) {
-		    return num && num
-		        .toString()
-		        .replace(/(\d)(?=(\d{3})+\.)/g, function($0, $1) {
-		            return $1 + ",";
-		        });
-		}
-		console.log(commafy(1234567.90)); //1,234,567.90
-
+``` javascript
+	function commafy(num) {
+		return num && num
+			.toString()
+			.replace(/(\d)(?=(\d{3})+\.)/g, function($0, $1) {
+				return $1 + ",";
+			});
+	}
+	console.log(commafy(1234567.90)); //1,234,567.90
+```
 
 
 - 检测浏览器版本版本有哪些方式？
@@ -1705,11 +1721,11 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
 
 
 - 使用JS实现获取文件扩展名？
-
+``` javascript
 		function getFileExtension(filename) {
 		  return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
 		}
-
+```
 		String.lastIndexOf() 方法返回指定值（本例中的'.'）在调用该方法的字符串中最后出现的位置，如果没找到则返回 -1。
 		对于'filename'和'.hiddenfile'，lastIndexOf的返回值分别为0和-1无符号右移操作符(»>) 将-1转换为4294967295，将-2转换为4294967294，这个方法可以保证边缘情况时文件名不变。
 		String.prototype.slice() 从上面计算的索引处提取文件的扩展名。如果索引比文件名的长度大，结果为""。
